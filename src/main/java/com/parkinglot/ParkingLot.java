@@ -6,6 +6,7 @@ import java.util.Map;
 public class ParkingLot {
     private Car car;
     private Map<ParkingTicket, Car> parkedPosition = new HashMap<>();
+    private boolean isTicketUsed;
 
     public ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
@@ -16,6 +17,10 @@ public class ParkingLot {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
-        return parkedPosition.get(parkingTicket);
+        Car car = parkedPosition.get(parkingTicket);
+        parkedPosition.remove(parkingTicket);
+        return car;
     }
+
+
 }
