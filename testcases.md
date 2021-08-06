@@ -5,7 +5,7 @@ When park the car
 Then return a parking ticket. 
 
 [] Case2  
-Given a parking lot and a car  
+Given a parking lot and a parked car  
 When fetching the car  
 Then return car  
 
