@@ -79,16 +79,16 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_nothing_when_park_the_car_given_parking_lot_without_any_position_and_car(){
+    public void should_return_exception_with_message_when_parking_without_any_position_given_car_and_parking_lot(){
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         parkingLot.park(new Car());
         Car car = new Car();
 
         //when
-        ParkingTicket parkingTicket = parkingLot.park(car);
+        Exception exception = assertThrows(NotEnoughPositionException.class, () -> parkingLot.park(car));
 
         //then
-        assertNull(parkingTicket);
+        assertEquals("No available position.", exception.getMessage());
     }
 }

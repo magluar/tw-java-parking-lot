@@ -19,7 +19,7 @@ public class ParkingLot {
 
     public ParkingTicket park(Car car) {
         if (parkedPosition.size() == capacity){
-            return null;
+            throw new NotEnoughPositionException();
         }
         ParkingTicket parkingTicket = new ParkingTicket();
         this.car = car;
