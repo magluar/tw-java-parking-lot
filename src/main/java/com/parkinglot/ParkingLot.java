@@ -4,9 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ParkingLot {
+    private static final int DEFAULT_CAPACITY = 10;
     private Car car;
     private Map<ParkingTicket, Car> parkedPosition = new HashMap<>();
-    private boolean isTicketUsed;
+    private final int capacity;
+
+    public ParkingLot() {
+        this.capacity = DEFAULT_CAPACITY;
+    }
+
+    public ParkingLot(int capacity) {
+        this.capacity = capacity;
+    }
 
     public ParkingTicket park(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
