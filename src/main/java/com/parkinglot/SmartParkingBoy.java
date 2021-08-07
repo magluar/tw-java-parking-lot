@@ -12,10 +12,15 @@ public class SmartParkingBoy extends ParkingBoy {
     public ParkingTicket park(Car car) {
         ParkingLot parkingLotWithMostAvailablePosition = null;
         for (ParkingLot parkingLot : parkingLots) {
-            if (parkingLotWithMostAvailablePosition == null || parkingLot.getAvailablePosition() > parkingLotWithMostAvailablePosition.getAvailablePosition()){
-                parkingLotWithMostAvailablePosition = parkingLot;
+            if (parkingLot.getAvailablePosition() > 0) {
+                if (parkingLotWithMostAvailablePosition == null || parkingLot.getAvailablePosition() > parkingLotWithMostAvailablePosition.getAvailablePosition()) {
+                    parkingLotWithMostAvailablePosition = parkingLot;
+                }
             }
         }
-        return Objects.requireNonNull(parkingLotWithMostAvailablePosition).park(car);
+        if(parkingLotWithMostAvailablePosition == null){
+            throw new NotEnoughPositionException();
+        }
+        return parkingLotWithMostAvailablePosition.park(car);
     }
 }

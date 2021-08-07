@@ -107,4 +107,25 @@ public class SmartParkingBoyTest {
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
+
+    @Test
+    public void should_return_exception_with_error_message_when_park_the_car_given_two_parking_lots_both_without_any_position_and_a_car_to_a_parking_boy(){
+        //when
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        parkingLot1.park(new Car());
+        parkingLot2.park(new Car());
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Car car = new Car();
+
+        //when
+        Exception exception = assertThrows(NotEnoughPositionException.class, () -> smartParkingBoy.park(car));
+
+        //then
+        assertEquals("No available position.", exception.getMessage());
+
+    }
 }
