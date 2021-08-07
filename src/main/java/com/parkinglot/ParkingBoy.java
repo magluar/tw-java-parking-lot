@@ -32,6 +32,14 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket){
-        return parkingLots.get(0).fetch(parkingTicket);
+        for (ParkingLot parkingLot : parkingLots) {
+            try{
+                return parkingLot.fetch(parkingTicket);
+            }
+            catch(UnrecognizedParkingTicketException ignored){
+
+            }
+        }
+        throw new UnrecognizedParkingTicketException();
     }
 }
