@@ -17,7 +17,13 @@ public class ParkingBoy {
     }
 
     public Car fetch(ParkingTicket parkingTicket) {
+        if (!isTicketRecognized(parkingTicket)){
+            throw new UnrecognizedParkingTicketException();
+        }
         return parkedPosittion.get(parkingTicket);
-//        return new Car();
+    }
+
+    public boolean isTicketRecognized(ParkingTicket parkingTicket){
+        return parkedPosittion.containsKey(parkingTicket);
     }
 }
