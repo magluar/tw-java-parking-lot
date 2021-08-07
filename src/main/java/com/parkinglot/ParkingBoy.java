@@ -34,7 +34,7 @@ public class ParkingBoy {
     public Car fetch(ParkingTicket parkingTicket){
         for (ParkingLot parkingLot : parkingLots) {
             try{
-                if (!parkingLot.isTicketRecognized(parkingTicket)){
+                if (parkingLot.isTicketRecognized(parkingTicket)) {
                     return parkingLot.fetch(parkingTicket);
                 }
             }

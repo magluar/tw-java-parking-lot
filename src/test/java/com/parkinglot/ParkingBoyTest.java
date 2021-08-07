@@ -179,6 +179,7 @@ public class ParkingBoyTest {
 
     @Test
     public void should_return_exception_with_error_message_when_fetch_the_car_given_used_tickets_and_two_parking_lots_to_a_parking_boy() {
+        //given
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
         List<ParkingLot> parkingLots = new ArrayList<>();
@@ -186,11 +187,33 @@ public class ParkingBoyTest {
         parkingLots.add(parkingLot2);
         ParkingTicket usedTicket = parkingLot2.park(new Car());
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingBoy.fetch(usedTicket);
 
         //when
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetch(usedTicket));
 
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
+    }
+
+    @Test
+    public void should_return_exception_with_error_message_when_park_the_car_given_two_parking_lots_both_without_any_position_and_a_car_to_a_parking_boy(){
+        //when
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        parkingLot1.park(new Car());
+        parkingLot2.park(new Car());
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car = new Car();
+
+        //when
+        Exception exception = assertThrows(NotEnoughPositionException.class, () -> parkingBoy.park(car));
+
+        //then
+        assertEquals("No available position.", exception.getMessage());
+
     }
 }
