@@ -20,7 +20,15 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        return parkingLots.get(0).park(car);
+        for (ParkingLot parkingLot : parkingLots) {
+            try{
+                return parkingLot.park(car);
+            }
+            catch(NotEnoughPositionException e){
+
+            }
+        }
+        throw new NotEnoughPositionException();
     }
 
     public Car fetch(ParkingTicket parkingTicket){
