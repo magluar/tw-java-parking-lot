@@ -34,7 +34,9 @@ public class ParkingBoy {
     public Car fetch(ParkingTicket parkingTicket){
         for (ParkingLot parkingLot : parkingLots) {
             try{
-                return parkingLot.fetch(parkingTicket);
+                if (!parkingLot.isTicketRecognized(parkingTicket)){
+                    return parkingLot.fetch(parkingTicket);
+                }
             }
             catch(UnrecognizedParkingTicketException ignored){
 
