@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ParkingBoy {
 
-    private List<ParkingLot> parkingLots = new ArrayList<>();
+    protected List<ParkingLot> parkingLots = new ArrayList<>();
 
     public ParkingBoy(ParkingLot parkingLot) {
 //        this(Collections.singletonList(parkingLot));

@@ -18,7 +18,7 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        if (parkedPosition.size() == capacity){
+        if(getAvailablePosition() == 0){
             throw new NotEnoughPositionException();
         }
         ParkingTicket parkingTicket = new ParkingTicket();
@@ -42,4 +42,7 @@ public class ParkingLot {
     }
 
 
+    public int getAvailablePosition() {
+        return capacity - parkedPosition.size();
+    }
 }
