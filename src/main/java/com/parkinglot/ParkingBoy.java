@@ -24,7 +24,7 @@ public class ParkingBoy {
             try{
                 return parkingLot.park(car);
             }
-            catch(NotEnoughPositionException e){
+            catch(NotEnoughPositionException ignored){
 
             }
         }

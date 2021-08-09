@@ -33,7 +33,7 @@ public class SmartParkingBoyTest {
     public void should_park_to_second_parking_lot_when_park_the_car_given_two_parking_lot_with_second_parking_lot_has_more_available_position_and_a_car_to_a_parking_boy(){
         //given
         ParkingLot parkingLot1 = new ParkingLot(2);
-        ParkingLot parkingLot2 = new ParkingLot(3);
+        ParkingLot parkingLot2 = new ParkingLot(10);
         List<ParkingLot> parkingLots = new ArrayList<>();
         parkingLots.add(parkingLot1);
         parkingLots.add(parkingLot2);
